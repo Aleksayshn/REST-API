@@ -1,5 +1,5 @@
 const getAll = require('./listContacts')
-const updateContacts = require('../helpers/updateContacts')
+const updateContacts = require('../../helpers/updateContacts')
 
 const updateById = async (id, body) => {
         const contacts = await getAll();

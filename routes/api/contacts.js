@@ -1,8 +1,8 @@
 const express = require('express')
 const Joi = require("joi");
 
-const operations = require('../../models')
-const httpError = require('../../helpers/httpError')
+const operations = require('../../models/operations')
+const HttpError = require('../../helpers/HttpError')
 
 const router = express.Router()
 
@@ -28,7 +28,8 @@ router.get('/:contactId', async (req, res, next) => {
     const { contactId } = req.params;
     const contact = await operations.getById(contactId);
     if (!contact) {
-      throw httpError(404, `Contact with id: ${contactId} was not found`);
+      throw HttpError(404, `Contact with id: ${contactId} was not found`);
+    // return res.status(404).json({message: "Not found"})
     }
     res.json({
     status: 'success',
@@ -42,7 +43,7 @@ router.post("/", async (req, res, next) => {
   try {
     const { error } = addSchema.validate(req.body);
     if (error) {
-      throw httpError(400, error.message);
+      throw HttpError(400, error.message);
     }
   const { name, email, phone } = req.body;
     const contact = await operations.add(name, email, phone);
@@ -59,9 +60,11 @@ router.delete("/:contactId", async (req, res, next) => {
     const { contactId } = req.params;
     const result = await operations.remove(contactId);
     if (!result) {
-      throw httpError(404, `Contact with id: ${contactId} was not found`);
+      throw HttpError(404, `Contact with id: ${contactId} was not found`);
     }
-    res.status(204).json({ message: "Contact deleted" });
+    // res.status(204).send();
+    res.json({ message: "Contact deleted" });
+
   } catch (error) {next(error);}
 });
 
@@ -69,13 +72,13 @@ router.put("/:contactId", async (req, res, next) => {
   try {
     const { error } = addSchema.validate(req.body);
     if (error) {
-      throw httpError(400, "missing fields");
+      throw HttpError(400, "missing fields");
     }
     const { contactId } = req.params;
     // const { name, email, phone } = req.body;
     const result = await operations.updateById(contactId, req.body);
     if (!result) {
-      throw httpError(404, `Contact with id: ${contactId} was not found`);
+      throw HttpError(404, `Contact with id: ${contactId} was not found`);
     }
     res.json({
     status: 'success',
@@ -93,7 +96,7 @@ router.patch("/:contactId/", async (req, res, next) => {
 
     const contact = await operations.changeById(contactId, phone );
     if (!contact) {
-      throw httpError(404, `Contact with id: ${contactId} was not found`);
+      throw HttpError(404, `Contact with id: ${contactId} was not found`);
     }
     res.json({
     status: 'success',

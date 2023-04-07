@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const filePath = require('../helpers/filePath');
+const filePath = require('../../helpers/filePath');
 
 const listContacts = async () => {
 

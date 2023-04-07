@@ -1,6 +1,6 @@
 const { nanoid } = require("nanoid");
 
-const updateContacts = require('../helpers/updateContacts')
+const updateContacts = require('../../helpers/updateContacts')
 const getAll = require('./listContacts')
 
 const add = async (name, email, phone) => {
