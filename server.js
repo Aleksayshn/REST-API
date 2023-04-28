@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-
 const app = require("./app");
+
+mongoose.Promise = global.Promise;
 
 const PORT = process.env.PORT || 3000;
 const uriDb = process.env.DB_HOST;
 
-const connection = mongoose.connect(uriDb);
+const connection = mongoose.connect(uriDb, { useNewUrlParser: true, useUnifiedTopology: true });
 
 connection
   .then(() => {
