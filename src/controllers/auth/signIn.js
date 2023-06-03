@@ -37,7 +37,8 @@ const signIn = async (req, res) => {
 
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "5h" });
   await setToken(_id, { token });
-
+  req.user = user;
+  
   res.status(200).json({
         status: "success",
         code: 200, 

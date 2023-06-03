@@ -3,7 +3,7 @@
 const app = require("./app");
 const connectDB = require("./db/connection");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 process.on("exit", (code) => {
   console.log(`Exit with code: ${code}`);
