@@ -22,15 +22,15 @@
 
 **GET /:** Retrieves all contacts. Requires authentication using a JWT token. Calls the getAllContacts controller function to fetch all contacts.
 
-**GET /:contactId:** Retrieves a specific contact by its ID. Requires authentication using a JWT token. Calls the getById controller function to fetch the contact by ID.
+**GET /:signup:** Retrieves a specific contact by its ID. Requires authentication using a JWT token. Calls the getById controller function to fetch the contact by ID.
 
 **POST /:** Creates a new contact. Requires authentication using a JWT token. Accepts a JSON payload containing the contact details. Performs validation of the request body against the addSchema defined in the contacts model. Calls the addContacts controller function to handle the creation of a new contact.
 
-**PUT /:contactId:** Updates a specific contact by its ID. Requires authentication using a JWT token. Accepts a JSON payload containing the updated contact details. Performs validation of the request body against the addSchema defined in the contacts model. Calls the updateContacts controller function to handle the update of the contact.
+**PUT /:id:** Updates a specific contact by its ID. Requires authentication using a JWT token. Accepts a JSON payload containing the updated contact details. Performs validation of the request body against the addSchema defined in the contacts model. Calls the updateContacts controller function to handle the update of the contact.
 
-**PATCH /:contactId/favorite:** Updates the favorite status of a specific contact by its ID. Requires authentication using a JWT token. Accepts a JSON payload containing the updated favorite status. Performs validation of the request body against the updateFavoriteSchema defined in the contacts model. Calls the updateStatusContact controller function to handle the update of the contact's favorite status.
+**PATCH /:id/favorite:** Updates the favorite status of a specific contact by its ID. Requires authentication using a JWT token. Accepts a JSON payload containing the updated favorite status. Performs validation of the request body against the updateFavoriteSchema defined in the contacts model. Calls the updateStatusContact controller function to handle the update of the contact's favorite status.
 
-**DELETE /:contactId:** Deletes a specific contact by its ID. Requires authentication using a JWT token. Calls the deleteContacts controller function to delete the contact by ID.
+**DELETE /:id:** Deletes a specific contact by its ID. Requires authentication using a JWT token. Calls the deleteContacts controller function to delete the contact by ID.
 
 ### Teams:
 
