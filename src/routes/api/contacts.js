@@ -13,18 +13,18 @@ const { authorizationCheck } = require("../../middlewares");
 
 router
   .get("/", authorizationCheck, ctrl.getAll)
-  .get("/:contactId", authorizationCheck, isValidId, ctrl.getById)
+  .get("/:id", authorizationCheck, isValidId, ctrl.getById)
   .post("/", authorizationCheck, addContactValidation, ctrl.add)
-  .delete("/:contactId", authorizationCheck, isValidId, ctrl.remove)
+  .delete("/:id", authorizationCheck, isValidId, ctrl.remove)
   .put(
-    "/:contactId",
+    "/:id",
     authorizationCheck,
     isValidId,
     updateContactValidation,
     ctrl.update
   )
   .patch(
-    "/:contactId/favorite",
+    "/:id/favorite",
     authorizationCheck,
     isValidId,
     updateStatusValidation,
